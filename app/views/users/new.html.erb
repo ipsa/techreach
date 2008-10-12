@@ -1,14 +1,10 @@
 <% @user.password = @user.password_confirmation = nil %>
-<%= title "Signup", :h2 %>
+<%= title "Sign Up for TechReach", :h2 %>
 <% form_for @user do |f| %>
 	<%= f.error_messages %>
 	<fieldset>
 		<legend>Your Details</legend>
 		<ol>
-			<li>
-				<%= f.label :login, 'Username' %>
-				<%= f.text_field :login %>
-			</li>
 			<li>
 				<%= f.label :email %>
 				<%= f.text_field :email %>
@@ -23,6 +19,10 @@
 			</li>
 		</ol>
 	</fieldset>
+	
+	
+	<% if false %>
+	<!-- Are we going to use OpenID?? -->
 	<fieldset>
 		<legend>Signup with OpenID</legend>
 		<ol>
@@ -32,6 +32,9 @@
 			</li>
 		</ol>
 	</fieldset>
+	<% end %>
+	
+	
 	<div class="buttons">
 		<%= submit_tag 'Sign up' %>
 	</div>
