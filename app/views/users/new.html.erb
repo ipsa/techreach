@@ -2,6 +2,15 @@
 <%= title "Sign Up for TechReach", :h2 %>
 <% form_for @user do |f| %>
 	<%= f.error_messages %>
+	
+	<div id="select_user_type" style="text-align:center">
+		<h1>I am a:</h1>
+		
+		<p>
+			A TechReach Teacher...
+		</p>
+	</div>
+	
 	<fieldset>
 		<legend>Your Details</legend>
 		<ol>
@@ -36,6 +45,6 @@
 	
 	
 	<div class="buttons">
-		<%= submit_tag 'Sign up' %>
+		<%= submit_tag 'Sign Up' %>
 	</div>
 <% end %>
