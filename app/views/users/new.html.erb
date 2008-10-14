@@ -3,31 +3,48 @@
 <% form_for @user do |f| %>
 	<%= f.error_messages %>
 	
-	<div id="select_user_type" style="text-align:center">
-		<h1>I am a:</h1>
+	<div id="choose_role">
+		<h1>I'm a&#8230;</h1>
 		
-		<p>
-			A TechReach Teacher...
-		</p>
+		<ul>
+			<li>
+				<%= radio_button_tag('role', 'teacher', true) %>
+				<%= label_tag('role_teacher', 'Teacher') %>
+			</li>
+			<li>
+				<%= radio_button_tag('role', 'speaker', false, :disabled => true) %>
+				<%= label_tag('role_speaker', 'Speaker') %>
+			</li>
+		</ul>
+		
+		<div id="role_details" class="clearfix">
+			<div id="role_icon">
+				<%= image_tag('icons/blackboard_32.png') %>
+			</div>
+			<div id="role_description" class="clearfix">
+				<p>
+					As a <strong class="hl">TechReach Teacher</strong>, you'll be able to find a technology professional to speak in your classroom.
+				</p>
+			</div>
+		</div>
+		
 	</div>
 	
-	<fieldset>
-		<legend>Your Details</legend>
-		<ol>
-			<li>
-				<%= f.label :email %>
-				<%= f.text_field :email %>
-			</li>
-			<li>
-				<%= f.label :password %>
-				<%= f.password_field :password %>
-			</li>
-			<li>
-				<%= f.label :password_confirmation, 'Confirm Password' %>
-				<%= f.password_field :password_confirmation %>
-			</li>
-		</ol>
-	</fieldset>
+	<div class="form_item">
+		<%= f.label :email, 'Your Email Address' %>
+		<%= f.text_field :email, :class => 'text' %>
+		<small>You'll use this to log in to the site. We solemnly swear not to spam you.</small>
+	</div>
+	
+	<div class="form_item">
+		<%= f.label :password, 'Choose Password' %>
+		<%= f.password_field :password, :class => 'text' %>
+	</div>
+	
+	<div class="form_item">
+		<%= f.label :password_confirmation, 'Confirm Your Password' %>
+		<%= f.password_field :password_confirmation, :class => 'text' %>
+	</div>
 	
 	
 	<% if false %>
@@ -44,7 +61,7 @@
 	<% end %>
 	
 	
-	<div class="buttons">
+	<div class="form_buttons">
 		<%= submit_tag 'Sign Up' %>
 	</div>
 <% end %>

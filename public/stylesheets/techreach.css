@@ -1,0 +1,204 @@
+/* @group Base Styles */
+
+body {
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, sans-serif;
+	color: #2B2B2B;
+	line-height: 18px;
+}
+
+h1 {
+	font-size: 35px;
+	line-height: 30px;
+}
+
+h2 {
+	font-size: 25px;
+}
+
+h3 {
+	font-size: 19px;
+}
+
+h4 {
+	font-size: 15px;
+}
+
+h1, h2, h3 {
+	margin: 14px 0 7px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Lucida Grande", Candara, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+strong {
+	font-weight: bold;
+}
+
+abbr, acronym {
+	border-bottom: 1px dotted #000;
+	cursor: help;
+}
+
+blockquote, ul, ol, dl {
+	margin: 1em;
+}
+
+ol, ul, dl {
+	margin-left: 2em;
+}
+
+ol li {
+	list-style: decimal outside;
+}
+
+ul li {
+	list-style: disc outside;
+}
+
+dl dd {
+	margin-left: 1em;
+}
+
+th, td {
+	padding: .5em;
+}
+
+th {
+	font-weight: bold;
+	text-align: center;
+}
+
+caption {
+	margin-bottom: .5em;
+	text-align: center;
+}
+
+p, fieldset, table, pre {
+	margin-bottom: 1em;
+}
+
+a, a:link, a:visited {
+	color: #2288BB;
+}
+
+a:hover {
+	color: #44BBEE;
+}
+
+.highlight, .hl {
+	background: #FAFF00;
+	padding: 1px;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+/* Hide from IE Mac \*/
+
+.clearfix {
+	display: block;
+}
+
+/* @end */
+
+/* @group Forms */
+
+.form_item {
+	background: #EBEBEB;
+	clear: left;
+	margin: 10px 0;
+	padding: 13px;
+}
+
+.form_item label {
+	display: block;
+	float: left;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0 0 5px;
+	padding: 8px 3px 0 0;
+	width: 200px;
+}
+
+.form_item small {
+	display: block;
+	margin: 0 0 0 205px;
+	font-size: 12px;
+}
+
+input.text, input.file, textarea, select {
+	margin: 0;
+	font-size: 25px;
+	color: #333;
+	width: 60%;
+}
+
+.form_buttons {
+	border-top: 1px solid #BBBBBB;
+	padding: 7px 13px;
+}
+
+/* @end */
+
+#choose_role {
+	background: #EBEBEB;
+	padding: 13px;
+	text-align: center;
+}
+
+#choose_role ul {
+	margin: 20px 0;
+}
+
+#choose_role li {
+	display: inline;
+	list-style-type: none;
+	margin: 0 10px;
+}
+
+#choose_role label {
+	font-size: 16px;
+}
+
+#role_details {
+	background: #E2E2E2;
+	border-bottom: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+	border-top: 1px solid #DDD;
+	border-left: 1px solid #DDD;
+	margin: 0 25px;
+	text-align: left;
+}
+
+#role_icon {
+	float: left;
+	text-align: center;
+	line-height: 100%;
+	padding: 5px 5px 0;
+	width: 60px;
+}
+
+#role_description {
+	background: #F7F7F7;
+	margin-left: 70px;
+	padding: 8px;
+}
+
+#role_description p {
+	margin-bottom: 0;
+}
