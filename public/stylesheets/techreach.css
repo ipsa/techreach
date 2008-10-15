@@ -1,5 +1,9 @@
 /* @group Base Styles */
 
+html {
+	background: url(../images/bg.gif) 0 0 repeat-x;
+}
+
 body {
 	font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, sans-serif;
 	color: #2B2B2B;
@@ -202,3 +206,29 @@ input.text, input.file, textarea, select {
 #role_description p {
 	margin-bottom: 0;
 }
+
+#hd h1 {
+	float: left;
+	margin-top: 40px;
+}
+
+/* @group Layout */
+
+#nav {
+	float: right;
+	margin-right: 50px;
+	margin-top: 60px;
+}
+
+#nav li {
+	display: inline;
+	list-style-type: none;
+	margin: 0 15px;
+}
+
+#bd {
+	margin-top: 20px;
+}
+
+/* @end */
+

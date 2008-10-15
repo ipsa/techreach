@@ -8,21 +8,28 @@
     </head>
     <body>
         <div id="doc" class="yui-t2">
-            <div id="hd">
-                <ul>
-                    <% if logged_in? %>
-                    <li>
-                        <%= link_to 'Logout', logout_path %>
-                    </li>
-                    <% else %>
-                    <li>
-                        <%= link_to 'Login', login_path %>
-                    </li>
-                    <li>
-                        <%= link_to 'Sign Up', signup_path %>
-                    </li>
-                    <% end %>
-                </ul>
+            <div id="hd" class="clearfix">
+            	<a href="/">
+            		<h1>TechReach</h1>
+            	</a>
+				
+				<div id="nav">
+					<ul>
+	                    <% if logged_in? %>
+	                    <li>
+	                        <%= link_to 'Logout', logout_path %>
+	                    </li>
+	                    <% else %>
+	                    <li>
+	                        <%= link_to 'Login', login_path %>
+	                    </li>
+	                    <li>
+	                        <%= link_to 'Sign Up', signup_path %>
+	                    </li>
+	                    <% end %>
+	                </ul>
+				</div>
+				
             </div>
             <div id="bd">
                 <%= flash_messages %>
