@@ -26,11 +26,17 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :email, :name, :password, :password_confirmation, :identity_url
 
-  # Authenticates a user by their email and unencrypted password.  Returns the user or nil.
-  def self.authenticate(email, password)
-    u = find_in_state :first, :active, :conditions => { :email => email } # need to get the salt
-    u && u.authenticated?(password) ? u : nil
-  end
+   # Authenticates a user by their email and unencrypted password.  Returns the user or nil.
+   def self.authenticate(email, password)
+      u = find_in_state :first, :active, :conditions => { :email => email } # need to get the salt
+      
+      if (!u)
+         # Allow pending users to login, but warn them that they need to activate their account.
+         u = find_in_state :first, :pending, :conditions => {:email => email} # need to get the salt
+      end
+      
+      u && u.authenticated?(password) ? u : nil
+   end
   
   # Check if a user has a role.
   def has_role?(role)

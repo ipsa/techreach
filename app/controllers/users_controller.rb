@@ -71,8 +71,12 @@ class UsersController < ApplicationController
       end
       
       if @user.errors.empty?
+         # All good. Set the new user as the current user in the session, 
+         # effectively logging them in.
+         self.current_user = @user
+         
+         # Redirect them to the iterim signup page.
          redirect_to(new_user_user_url(@user))
-#         User.authenticate(attributes[:email], attributes[:password])
       else
          failed_creation
       end
