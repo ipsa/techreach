@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
    skip_before_filter :verify_authenticity_token, :only => :create
    
+   # Displays the new user form.
    def new
       @user = User.new
    end
    
+   # Creates a new TechReach user.
    def create
       logout_keeping_session!
       if using_open_id?
@@ -21,6 +23,22 @@ class UsersController < ApplicationController
       end
    end
    
+   # The user is redirected to this action after successfully creating an account. At this point, they've
+   # only supplied an email address and password, and an activation email has been sent. This screen will
+   # let the new user know about the email activation and provide them with a way to fill out the more
+   # important parts of their profile (e.g. first name, last name).
+   def new_user
+      @user = User.find_by_id(params[:id])
+   end
+   
+   # Handles the updating of the more important profile fields after a user has just signed up for a new
+   # account.
+   def update_new_user
+      
+   end
+   
+   # Activates a pending user account. Typically the user receives an email with a link to follow that
+   # contains the activation code.
    def activate
       logout_keeping_session!
       user = User.find_by_activation_code(params[:activation_code]) unless params[:activation_code].blank?
@@ -40,6 +58,8 @@ class UsersController < ApplicationController
    
    protected
    
+   # Actually creates the new user account. Redirects them to an interim screen where they can
+   # fill out the rest of their profile if successful.
    def create_new_user(attributes)
       @user = User.new(attributes)
       if @user && @user.valid?
@@ -51,18 +71,11 @@ class UsersController < ApplicationController
       end
       
       if @user.errors.empty?
-         successful_creation(@user)
+         redirect_to(new_user_user_url(@user))
 #         User.authenticate(attributes[:email], attributes[:password])
       else
          failed_creation
       end
-   end
-   
-   def successful_creation(user)
-      redirect_back_or_default(root_path)
-      flash[:notice] = "Thanks for signing up!"
-      flash[:notice] << " We're sending you an email with your activation code." if @user.not_using_openid?
-      flash[:notice] << " You can now login with your OpenID." unless @user.not_using_openid?
    end
    
    def failed_creation(message = 'Sorry, there was an error creating your account')

@@ -1,0 +1,27 @@
+<h2>Check Your Email to Complete Registration</h2>
+<p>
+	We sent an email to <strong class="hl"><%= @user.email %></strong> to activate your account. It should 
+	arrive within 30 minutes, so be sure check your inbox and click the link in the message. If you do not 
+	activate your account within two days, you will have to sign up again.
+</p>
+
+<%= title 'Update Your Profile', :h3 %>
+<% form_for @user do |f| %>
+	<%= f.error_messages %>
+	
+	<div class="form_item">
+		First name
+	</div>
+	
+	<div class="form_item">
+		Last name
+	</div>
+	
+	<div class="form_item">
+		School
+	</div>
+	
+	<div class="form_item">
+		About Yourself
+	</div>
+<% end %>
