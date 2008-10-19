@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081012174327) do
+ActiveRecord::Schema.define(:version => 20081014033117) do
 
   create_table "open_id_authentication_associations", :force => true do |t|
     t.integer "issued"
@@ -43,6 +43,18 @@ ActiveRecord::Schema.define(:version => 20081012174327) do
     t.integer "user_id"
   end
 
+  create_table "schools", :force => true do |t|
+    t.integer  "school_id",   :null => false
+    t.string   "school_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "schools_users", :id => false, :force => true do |t|
+    t.integer "school_id"
+    t.integer "user_id"
+  end
+
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :default => "", :null => false
     t.text     "data"
@@ -55,7 +67,6 @@ ActiveRecord::Schema.define(:version => 20081012174327) do
 
   create_table "users", :force => true do |t|
     t.string   "identity_url"
-    t.string   "name",                      :limit => 100, :default => ""
     t.string   "email",                     :limit => 100
     t.string   "crypted_password",          :limit => 40
     t.string   "salt",                      :limit => 40
@@ -67,6 +78,9 @@ ActiveRecord::Schema.define(:version => 20081012174327) do
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "first_name",                :limit => 50
+    t.string   "last_name",                 :limit => 50
+    t.text     "description"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
