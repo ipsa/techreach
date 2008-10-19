@@ -62,7 +62,7 @@ class UsersController < ApplicationController
    # fill out the rest of their profile if successful.
    def create_new_user(attributes)
       @user = User.new(attributes)
-      if @user && @user.valid?
+      if @user && @user.valid_for_attributes?([:email, :password, :password_confirmation])
          if @user.not_using_openid?
             @user.register!
          else
