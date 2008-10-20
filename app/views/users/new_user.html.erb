@@ -5,15 +5,17 @@
 </p>
 
 <%= title 'Update Your Profile', :h3 %>
-<% form_for @user do |f| %>
+<% form_for @user, :url => {:action => 'update_new_user'} do |f| %>
 	<%= f.error_messages %>
 	
 	<div class="form_item">
-		First name
+		<%= f.label :first_name %>
+		<%= f.text_field :first_name, :class => 'text' %>
 	</div>
 	
 	<div class="form_item">
-		Last name
+		<%= f.label :last_name %>
+		<%= f.text_field :last_name, :class => 'text' %>
 	</div>
 	
 	<div class="form_item">
@@ -21,6 +23,12 @@
 	</div>
 	
 	<div class="form_item">
-		About Yourself
+		<%= f.label :description, 'About Yourself' %>
+		<%= f.text_area :description, :class => 'text' %>
+		<small>e.g. What grade and classes do you teach?</small>
+	</div>
+	
+	<div class="form_buttons">
+		<%= submit_tag 'Save Profile' %>
 	</div>
 <% end %>

@@ -34,7 +34,12 @@ class UsersController < ApplicationController
    # Handles the updating of the more important profile fields after a user has just signed up for a new
    # account.
    def update_new_user
-      
+      @user = User.find_by_id(params[:id])
+      if @user.update_attributes(params[:user])
+         redirect_to(login_url)
+      else
+         render(:action => :new_user)
+      end
    end
    
    # Activates a pending user account. Typically the user receives an email with a link to follow that
