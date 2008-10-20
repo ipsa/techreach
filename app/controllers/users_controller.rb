@@ -97,6 +97,6 @@ class UsersController < ApplicationController
    
    # Returns true if the current user's id is the same as the id of the user trying to be edited.
    def authorized?
-      current_user.id == params[:id].to_i
+      current_user && current_user.id == params[:id].to_i
    end
 end
