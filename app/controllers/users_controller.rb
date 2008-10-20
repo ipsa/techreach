@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
    skip_before_filter :verify_authenticity_token, :only => :create
+   before_filter :login_required, :only => [:new_user, :update_new_user]
    
    # Displays the new user form.
    def new
@@ -90,5 +91,12 @@ class UsersController < ApplicationController
    def failed_creation(message = 'Sorry, there was an error creating your account')
       flash[:error] = message
       render :action => :new
+   end
+   
+   private
+   
+   # Returns true if the current user's id is the same as the id of the user trying to be edited.
+   def authorized?
+      current_user.id == params[:id].to_i
    end
 end
