@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081014032130) do
+ActiveRecord::Schema.define(:version => 20081021132259) do
 
   create_table "open_id_authentication_associations", :force => true do |t|
     t.integer "issued"
@@ -43,6 +43,12 @@ ActiveRecord::Schema.define(:version => 20081014032130) do
     t.integer "user_id"
   end
 
+  create_table "schools", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :default => "", :null => false
     t.text     "data"
@@ -69,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20081014032130) do
     t.string   "first_name",                :limit => 50
     t.string   "last_name",                 :limit => 50
     t.text     "description"
+    t.integer  "school_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
