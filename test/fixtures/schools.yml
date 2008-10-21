@@ -1,0 +1,10 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+homewood:
+  name: Homewood High School
+
+vestavia:
+  name: Vestavia Hills High School
+  
+hoover:
+  name: Hoover High School

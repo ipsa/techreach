@@ -44,12 +44,13 @@ class User < ActiveRecord::Base
    
    # Relationships
    has_and_belongs_to_many :roles
+   belongs_to :school
    
    # HACK HACK HACK -- how to do attr_accessible from here?
    # prevents a user from submitting a crafted form that bypasses activation
    # anything else you want your user to change should be added here.
    attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, 
-      :identity_url, :description
+   :identity_url, :description, :school_id
    
    # Authenticates a user by their email and unencrypted password.  Returns the user or nil.
    def self.authenticate(email, password)

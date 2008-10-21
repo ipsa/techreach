@@ -19,7 +19,8 @@
 	</div>
 	
 	<div class="form_item">
-		School
+		<%= f.label :school_id %>
+		<%= f.collection_select :school_id, School.find(:all, :order => :name), :id, :name, {:include_blank => true} %>
 	</div>
 	
 	<div class="form_item">
