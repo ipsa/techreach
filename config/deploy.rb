@@ -50,6 +50,12 @@ set :group_writable, false                              # By default, Capistrano
 set :mongrel_port, '4166'                               # Mongrel port that was assigned to you
 # set :mongrel_nodes, "4"                               # Number of Mongrel instances for those with multiple Mongrels
 
+ssh_options[:forward_agent] = true
+set :branch, 'master'
+set :deploy_via, :remote_cache
+set :git_shallow_clone, 1
+set :git_enable_submodules, 1
+
 # Cap won't work on windows without the next line (see http://groups.google.com/group/capistrano/browse_thread/thread/13b029f75b61c09d)
 default_run_options[:pty] = true
 
