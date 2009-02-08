@@ -36,19 +36,31 @@
 #  end
 #end
 
-
+# Application Name
 set :application, 'techreach'
+
+# Application domain
 #set :domain, 'birminghamtechreach.org'
 set :domain, '626bha.aquinas.hostingrails.com'
-set :repository,  'git://github.com/ipsa/techreach.git'
+
+# Git repository location
 set :scm, :git
-#set :deploy_to, "/home/bhamtec/#{application}"
-set :deploy_to, "/home/bhamtec/capistrano"
+set :repository,  'git://github.com/ipsa/techreach.git'
+
+# Folder on the server to deploy the app to
+set :deploy_to, "/home/bhamtec/#{application}"
+
+# User account on the server
 set :user, 'bhamtec'
+
+# Don't use sudo since it's a shared server
 set :use_sudo, false
-set :group_writable, false                              # By default, Capistrano makes the release group-writable. You don't want this with HostingRails
-set :mongrel_port, '4166'                               # Mongrel port that was assigned to you
-# set :mongrel_nodes, "4"                               # Number of Mongrel instances for those with multiple Mongrels
+
+# By default, Capistrano makes the release group-writable. You don't want this with HostingRails
+set :group_writable, false
+
+# Mongrel port that was assigned to you
+set :mongrel_port, '4166'                               
 
 ssh_options[:forward_agent] = true
 set :branch, 'master'
@@ -56,11 +68,13 @@ set :deploy_via, :remote_cache
 set :git_shallow_clone, 1
 set :git_enable_submodules, 1
 
-# Cap won't work on windows without the next line (see http://groups.google.com/group/capistrano/browse_thread/thread/13b029f75b61c09d)
+# Cap won't work on windows without the next line
+# (see http://groups.google.com/group/capistrano/browse_thread/thread/13b029f75b61c09d)
 default_run_options[:pty] = true
 
-role :app, domain
-role :web, domain
-role :db,  domain, :primary => true
-
-#server '626bha.aquinas.hostingrails.com', :app, :web, :db, :primary => true
+# Server location (only 1 server for all roles)
+# TODO Use "domain" variable once birminghamtechreach.org is setup
+server '626bha.aquinas.hostingrails.com', :app, :web, :db, :primary => true
+#role :app, domain
+#role :web, domain
+#role :db,  domain, :primary => true
