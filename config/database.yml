@@ -45,6 +45,6 @@ production:
   # Mysql Settings
   adapter: mysql
   encoding: utf8
-  database: techreach_production
-  username: root
-  password:
+  database: bhamtec_production
+  username: bhamtec_dbadmin
+  password: UpkBE:h1sf?f
