@@ -14,7 +14,10 @@ namespace :deploy do
   end
   
   task :restart, :roles => :app do
-    run "cd #{current_path} && mongrel_rails restart"
+    # Note: mongrel_rails restart wasn't working properly, but stop then start does..
+    run "cd #{current_path} && mongrel_rails stop"
+    run "cd #{current_path} && mongrel_rails start -e production -p #{mongrel_port} -d"
+    run "cd #{current_path} && chmod 755 app config db lib public vendor script script/* public/disp*"
   end
   
 end
