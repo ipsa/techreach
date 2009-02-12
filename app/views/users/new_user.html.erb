@@ -18,15 +18,22 @@
 		<%= f.text_field :last_name %>
 	</div>
 	
-	<div class="form_item">
-		<%= f.label :school_id %>
-		<%= f.collection_select :school_id, School.find(:all, :order => :name), :id, :name, {:include_blank => true} %>
-	</div>
+	<% if @user.has_role?(:teacher) -%>
+		<div class="form_item">
+			<%= f.label :school_id %>
+			<%= f.collection_select :school_id, School.find(:all, :order => :name), :id, :name, {:include_blank => true} %>
+		</div>
+	<% end -%>
 	
 	<div class="form_item">
 		<%= f.label :description, 'About Yourself' %>
 		<%= f.text_area :description %>
-		<small>e.g. What grade and classes do you teach?</small>
+		<% if @user.has_role?(:teacher) -%>
+			<small>e.g. What grade and classes do you teach?</small>
+		<% end -%>
+		<% if @user.has_role?(:professional) -%>
+			<small>e.g. What kind of stuff can you talk about?</small>
+		<% end -%>
 	</div>
 	
 	<div class="form_buttons">
