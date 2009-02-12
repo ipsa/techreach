@@ -8,12 +8,12 @@
 		
 		<ul>
 			<li>
-				<%= radio_button_tag('role', 'teacher', true) %>
+				<%= radio_button_tag('role', Role.find_by_name('teacher').id, true, :id => 'role_teacher') %>
 				<%= label_tag('role_teacher', 'Teacher') %>
 			</li>
 			<li>
-				<%= radio_button_tag('role', 'speaker', false, :disabled => true) %>
-				<%= label_tag('role_speaker', 'Speaker') %>
+				<%= radio_button_tag('role', Role.find_by_name('professional').id, false, :id => 'role_speaker') %>
+				<%= label_tag('role_speaker', 'Professional') %>
 			</li>
 		</ul>
 		
