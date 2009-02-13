@@ -183,7 +183,7 @@ textarea {
 	font-size: 16px;
 }
 
-#role_details {
+.role_details {
 	background: #E2E2E2;
 	border-bottom: 1px solid #CCC;
 	border-right: 1px solid #CCC;
@@ -193,7 +193,7 @@ textarea {
 	text-align: left;
 }
 
-#role_icon {
+.role_icon {
 	float: left;
 	text-align: center;
 	line-height: 100%;
@@ -201,13 +201,13 @@ textarea {
 	width: 60px;
 }
 
-#role_description {
+.role_description {
 	background: #F7F7F7;
 	margin-left: 70px;
 	padding: 8px;
 }
 
-#role_description p {
+.role_description p {
 	margin-bottom: 0;
 }
 

@@ -8,23 +8,41 @@
 		
 		<ul>
 			<li>
-				<%= radio_button_tag('role', Role.find_by_name('teacher').id, true, :id => 'role_teacher') %>
+				<%= radio_button_tag('role', Role.find_by_name('teacher').id, true, :id => 'role_teacher',
+						:onclick => update_page { |page| 
+							page.toggle('teacher_details', 'professional_details')
+						}) %>
 				<%= label_tag('role_teacher', 'Teacher') %>
 			</li>
 			<li>
-				<%= radio_button_tag('role', Role.find_by_name('professional').id, false, :id => 'role_speaker') %>
+				<%= radio_button_tag('role', Role.find_by_name('professional').id, false, :id => 'role_speaker',
+						:onclick => update_page { |page| 
+							page.toggle('teacher_details', 'professional_details')
+						}) %>
 				<%= label_tag('role_speaker', 'Professional') %>
 			</li>
 		</ul>
 		
-		<div id="role_details" class="clearfix">
-			<div id="role_icon">
+		<div id="teacher_details" class="role_details clearfix">
+			<div class="role_icon">
 				<%= image_tag('icons/blackboard_32.png') %>
 			</div>
-			<div id="role_description" class="clearfix">
+			<div class="role_description" class="clearfix">
 				<p>
 					As a <strong class="hl">TechReach Teacher</strong>, you'll be able to find 
 					technology professionals to speak in your classroom.
+				</p>
+			</div>
+		</div>
+		
+		<div id="professional_details" class="role_details clearfix" style="display:none">
+			<div class="role_icon">
+				<%= image_tag('icons/blackboard_32.png') %>
+			</div>
+			<div class="role_description" class="clearfix">
+				<p>
+					As a <strong class="hl">TechReach Technology Professional</strong>, you'll be able to 
+					speak classrooms.
 				</p>
 			</div>
 		</div>
