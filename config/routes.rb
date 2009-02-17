@@ -19,6 +19,7 @@ ActionController::Routing::Routes.draw do |map|
   
   # Home Page
   map.root :controller => 'home'
+  map.home '/home', :controller => 'home'
 
   # Install the default routes as the lowest priority.
   map.connect ':controller/:action/:id'

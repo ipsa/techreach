@@ -1,0 +1,10 @@
+<%= title 'Update Your Profile', :h3 %>
+<% form_for @user do |f| %>
+	<%= f.error_messages %>
+	
+	<%= render :partial => 'shared_form_fields', :locals => {:f => f} %>
+	
+	<div class="form_buttons">
+		<%= submit_tag 'Update Profile' %>
+	</div>
+<% end %>

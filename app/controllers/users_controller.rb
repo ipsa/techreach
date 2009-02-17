@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :create
-  before_filter :login_required, :only => [:new_user, :update_new_user]
+  before_filter :login_required, :only => [:new_user, :update_new_user, :edit, :update]
+  before_filter :find_user, :only => [:new_user, :update_new_user, :edit, :update]
   
   # Displays the new user form.
   def new
@@ -37,15 +38,13 @@ class UsersController < ApplicationController
   # let the new user know about the email activation and provide them with a way to fill out the more
   # important parts of their profile (e.g. first name, last name).
   def new_user
-    @user = User.find_by_id(params[:id])
   end
   
   # Handles the updating of the more important profile fields after a user has just signed up for a new
   # account.
   def update_new_user
-    @user = User.find_by_id(params[:id])
     if @user.update_attributes(params[:user])
-      redirect_to(login_url)
+      redirect_to(home_url)
     else
       render(:action => :new_user)
     end
@@ -70,10 +69,28 @@ class UsersController < ApplicationController
     end
   end
   
+  # GET /users/:id/edit
+  def edit
+  end
+  
+  # PUT /users/1
+  def update
+    if @user.update_attributes(params[:user])
+      flash[:success] = 'Successfully updated your profile.'
+      redirect_to(home_url)
+    else
+      render :action => 'edit'
+    end
+  end
+  
   private
   
   # Returns true if the current user's id is the same as the id of the user trying to be edited.
   def authorized?
     current_user && current_user.id == params[:id].to_i
+  end
+  
+  def find_user
+    @user = User.find(params[:id])
   end
 end

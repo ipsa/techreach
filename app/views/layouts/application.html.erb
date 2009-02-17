@@ -16,6 +16,9 @@
 				<div id="nav">
 					<ul>
 	                    <% if logged_in? %>
+						<li>
+	                        <%= link_to 'My Profile', edit_user_path(current_user) %>
+	                    </li>
 	                    <li>
 	                        <%= link_to 'Logout', logout_path %>
 	                    </li>
