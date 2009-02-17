@@ -7,11 +7,11 @@ test:
   <<: *non_production_settings
 
 staging:
-  site_url: http://staging.example.com
+  site_url: http://staging.birminghamtechreach.org
   site_name: TechReach
   admin_email: admin@bhamtechreach.org  
   
 production:
-  site_url: http://www.example.com
+  site_url: http://www.birminghamtechreach.org
   site_name: TechReach
   admin_email: admin@bhamtechreach.org
